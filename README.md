@@ -18,3 +18,22 @@ program and have chosen Cyclistic for their mobility needs.
 
 ## Dataset
 For this case study, the available last 12 months of Cyclistic trip data which is between 2021/07-2022/06 are used for analysis.  
+
+```
+# Imported Libraries
+import numpy as np    
+import csv                                
+import os                                 
+import glob                               
+import pandas as pd                       
+import warnings                           
+import matplotlib.pyplot as plt           
+import difflib                            
+import re
+import datetime as datetime
+from datetime import timedelta
+pd.options.mode.chained_assignment = None
+import seaborn as sns
+%matplotlib inline
+
+```
