@@ -36,5 +36,25 @@ pd.options.mode.chained_assignment = None
 import seaborn as sns
 %matplotlib inline
 ```
+Data was read by ```pd.read_csv ``` and concated by ```pd.concat``` function.
 
+```python
+# Imported Datasets
+c2107= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202107-divvy-tripdata.csv")
+c2108= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202108-divvy-tripdata.csv")
+c2109= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202109-divvy-tripdata.csv")
+c2110= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202110-divvy-tripdata.csv")
+c2111= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202111-divvy-tripdata.csv")
+c2112= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202112-divvy-tripdata.csv")
+c2201= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202201-divvy-tripdata.csv")
+c2202= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202202-divvy-tripdata.csv")
+c2203= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202203-divvy-tripdata.csv")
+c2204= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202204-divvy-tripdata.csv")
+c2205= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202205-divvy-tripdata.csv")
+c2206= pd.read_csv("/Users/seldasezen/Desktop/cyclistic trip data_202107_202206/Trip data_cvs/202206-divvy-tripdata.csv")
+
+# Concacted Datasets
+c12mnths=pd.concat([c2107, c2108, c2109, c2110, c2111, c2112, c2201, c2202, c2203, c2204, c2205, c2206])
+
+```
 
