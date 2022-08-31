@@ -2,6 +2,12 @@
 The data is used in this case study to explore how different client types are using Cyclistic bikes. 
 The dataset is public and available for download [here](https://divvy-tripdata.s3.amazonaws.com/index.html). The data has been made available by Motivate International Inc under this [license](https://www.divvybikes.com/data-license-agreement). 
 
+
+## Table of Contents
+
+1. [About the company](README.md##About the company)
+2. [Dataset](README.md##Dataset)
+
 ## About the company
 In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that
 are geotracked and locked into a network of 692 stations across Chicago. The bikes can be unlocked from one station and
@@ -58,3 +64,6 @@ c12mnths=pd.concat([c2107, c2108, c2109, c2110, c2111, c2112, c2201, c2202, c220
 
 ```
 
+There are 5,900,385 data collected throughout between 2021/07 and 2022/06 with 13 variables which are 
+
+ride_id	rideable_type	started_at	ended_at	start_station_name	start_station_id	end_station_name	end_station_id	start_lat	start_lng	end_lat	end_lng	member_casual
