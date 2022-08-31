@@ -5,7 +5,7 @@ The dataset is public and available for download [here](https://divvy-tripdata.s
 
 ## Table of Contents
 
-1. [About the company](README.md##About the company)
+1. [About the company](README.md##Aboutthecompany)
 2. [Dataset](README.md##Dataset)
 
 ## About the company
