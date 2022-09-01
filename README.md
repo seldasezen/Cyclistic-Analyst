@@ -64,6 +64,22 @@ c12mnths=pd.concat([c2107, c2108, c2109, c2110, c2111, c2112, c2201, c2202, c220
 
 ```
 
-There are 5,900,385 data collected throughout between 2021/07 and 2022/06 with 13 variables which are 
+There are ```5,900,385``` data collected throughout between ```2021/07 ```and ```2022/06 ``` with ``` 13 ``` variables which are 
 
-ride_id	rideable_type	started_at	ended_at	start_station_name	start_station_id	end_station_name	end_station_id	start_lat	start_lng	end_lat	end_lng	member_casual
+* ride_id
+* rideable_type
+* started_at
+* ended_at
+* start_station_name
+* start_station_id
+* end_station_name
+* end_station_id
+* start_lat
+* start_lng
+* end_lat
+* end_lng
+* member_casual
+
+## Data Cleaning
+
+Data type of ``` started_at ``` and ``` ended_at ``` changed as ```datetime```
