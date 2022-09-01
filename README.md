@@ -82,4 +82,20 @@ There are ```5,900,385``` data collected throughout between ```2021/07 ```and ``
 
 ## Data Cleaning
 
-Data type of ``` started_at ``` and ``` ended_at ``` changed as ```datetime```
+* Data type of ``` started_at ``` and ``` ended_at ``` changed as ```datetime```
+
+```python
+#converted column to datetime
+c12mnths['started_at']=pd.to_datetime(c12mnths['started_at'])
+c12mnths['ended_at']=pd.to_datetime(c12mnths['ended_at'])
+```
+* Missing values was found and removed and positive and zero ride duration values were found. 
+
+```python
+#Cleaned the rows with missing values
+c12mnths.dropna(axis=0, how='any', thresh=None, subset=None, inplace=True)
+
+
+#Flitered started_at data that is greater than ended_at
+c12mnths = c12mnths[c12mnths['started_at'] < c12mnths['ended_at']]
+```
