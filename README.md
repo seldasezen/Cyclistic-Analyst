@@ -6,21 +6,18 @@ The dataset is public and available for download [here](https://divvy-tripdata.s
 ## Table of Contents
 
 1. [About the company](README.md##Aboutthecompany)
-2. [Dataset](README.md##Dataset)
+2. [Statement of the Business task](README.md##StatementoftheBusinesstask)
+3. [Dataset](README.md##Dataset)
+4. [Data Cleaning](README.md##DataCleaning)
 
 ## About the company
 In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that
 are geotracked and locked into a network of 692 stations across Chicago. The bikes can be unlocked from one station and
 returned to any other station in the system anytime.
-Until now, Cyclistic’s marketing strategy relied on building general awareness and appealing to broad consumer segments.
-One approach that helped make these things possible was the flexibility of its pricing plans: single-ride passes, full-day passes,
-and annual memberships. Customers who purchase single-ride or full-day passes are referred to as casual riders. Customers
-who purchase annual memberships are Cyclistic members.
-Cyclistic’s finance analysts have concluded that annual members are much more profitable than casual riders. Although the
-pricing flexibility helps Cyclistic attract more customers, Moreno believes that maximizing the number of annual members will
-be key to future growth. Rather than creating a marketing campaign that targets all-new customers, Moreno believes there is a
-very good chance to convert casual riders into members. She notes that casual riders are already aware of the Cyclistic
-program and have chosen Cyclistic for their mobility needs.
+
+## Statement of the Business task
+
+To create a better understanding of how annual members and casual riders differ, why casual riders would buy a membership, and how digital media could affect their marketing tactics
 
 ## Dataset
 For this case study, the available last 12 months of Cyclistic trip data which is between 2021/07-2022/06 are used for analysis.  
@@ -89,7 +86,7 @@ There are ```5,900,385``` data collected throughout between ```2021/07 ```and ``
 c12mnths['started_at']=pd.to_datetime(c12mnths['started_at'])
 c12mnths['ended_at']=pd.to_datetime(c12mnths['ended_at'])
 ```
-* Missing values was found and removed and positive and zero ride duration values were found. 
+* The rows with missing values were removed, positive and zero duration between ``` started_at ``` and ``` ended_at ``` were found to investigate ```trip_duration ```.
 
 ```python
 #Cleaned the rows with missing values
@@ -99,3 +96,39 @@ c12mnths.dropna(axis=0, how='any', thresh=None, subset=None, inplace=True)
 #Flitered started_at data that is greater than ended_at
 c12mnths = c12mnths[c12mnths['started_at'] < c12mnths['ended_at']]
 ```
+* Days and months of the duration were added to create virtualisations based on time bases.
+```python
+#created a column for weekday
+c12mnths['week'] = c12mnths['started_at'].dt.day_name()
+#created a column month
+c12mnths['month'] = c12mnths['started_at'].dt.month
+```
+* Trip duration was created as minutes.
+
+```python
+#Calculated trip duration
+c12mnths['trip_duration'] = c12mnths['ended_at'] - c12mnths['started_at']
+#converted trip_duration from format days H:M:S to second
+c12mnths['trip_duration'] = c12mnths['trip_duration'].astype('timedelta64[s]')
+#convert to minutes
+c12mnths['trip_duration'] = c12mnths['trip_duration']/60
+c12mnths['trip_duration']=c12mnths['trip_duration'].round(decimals = 2)
+
+```
+## Data Analysis and Visualisations
+
+Visualizations were created in Jupiyer Notebook to observe trends between the usage by casual riders and annual members.
+
+### Member vs. Casual = Number of Riders
+
+```57.1% ```of riders are **member** riders ```42.9% ```of riders are **casual** riders
+
+```python
+casual_tot= casual['ride_id'].count()
+print('casual_tot: ', casual_tot)
+member_tot= member['ride_id'].count()
+print('member_tot: ', member_tot)
+
+```
+
+> **Key insight:** : Maximum Ride of annual members is 49107.15
