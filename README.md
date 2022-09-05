@@ -132,4 +132,108 @@ print('member_tot: ', member_tot)
 ```
 ![bars](Visualisations/Number_of_mem_cas.png)
 
-> **Key insight:** : Maximum Ride of annual members is 49107.15
+> **Key insight:** : The graph shows that member customers have taken 14.21 % more rides than casual customers.
+
+### Members vs Casual = Total number of rides per day of the week
+
+**Member customers** have rides ```22.35 %``` more than **casual customers** week. 
+
+```python
+casual =  c12mnths.loc[c12mnths['member_casual'] == 'casual']
+member = c12mnths.loc[c12mnths['member_casual'] == 'member']
+
+week_day = ['Sunday', 'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+tot_casual = []
+tot_member = []
+scasual = 0
+smember = 0
+for i in week_day:
+  df_casual= casual.loc[casual['week'] == i]
+  scasual = df_casual['ride_id'].count()
+  tot_casual.append(scasual)
+
+
+  df_member = member.loc[member['week'] == i]
+  smember = df_member['ride_id'].count()
+  tot_member.append(smember)
+
+tot_casual=[round(elem, 2) for elem in tot_casual]
+tot_member=[round(elem, 2) for elem in tot_member]
+    
+tot_dow = pd.DataFrame([tot_casual,tot_member],
+                            columns = ['Sunday', 'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                            index = ['casual','member'])             
+
+tot_dow.loc['diff_%'] = ((tot_dow.loc['member'] - tot_dow.loc['casual'])/tot_dow.loc['member'])*100
+
+tot_dow=tot_dow.round(decimals=2)
+print(tot_dow)
+
+x = np.arange(len(week_day))
+width = 0.4
+plt.bar(x-0.2, tot_casual, width)
+plt.bar(x+0.2, tot_member, width)
+
+plt.xticks(x, ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat'])
+plt.xlabel("Days of the Week")
+plt.legend(["Casual", "Member"])
+plt.title('Members vs Casual = Total number of rides per day of the week')
+plt.show()
+
+```
+
+![bars](Visualisations/Total number of rides per day of the week.png)
+
+> **Key insight:** : Casual customers prefer to take a ride at weekends more than member customers. This result may allow us to assume that member users can be workers who choose to go to work.
+
+### Members vs Casual = Total of rides per day of the months###
+
+**Member customers** have rides ```37.85 %``` more than **casual customers** per year.
+
+```python
+
+casual =  c12mnths.loc[c12mnths['member_casual'] == 'casual']
+member = c12mnths.loc[c12mnths['member_casual'] == 'member']
+
+month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+tot_casual_m = []
+tot_member_m = []
+scasual = 0
+smember = 0
+for i in month:
+  df_casual = casual.loc[casual['month'] == i]
+  scasual = df_casual['ride_id'].count()
+  tot_casual_m.append(scasual)
+
+
+  df_member = member.loc[member['month'] == i]
+  smember = df_member['ride_id'].count()
+  tot_member_m.append(smember)
+    
+tot_casual_m=[round(elem, 2) for elem in tot_casual_m]
+tot_member_m=[round(elem, 2) for elem in tot_member_m]
+
+tot_ride_m = pd.DataFrame([tot_casual_m,tot_member_m],
+                           columns = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                           index = ['casual','member'])             
+
+tot_ride_m.loc['diff_%'] = ((tot_ride_m.loc['member'] - tot_ride_m.loc['casual'])/tot_ride_m.loc['member'])*100
+
+tot_ride_m=tot_ride_m.round(decimals=2)
+
+print(tot_ride_m)
+
+x = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+plt.bar(x-0.2, tot_casual_m, width, label='Casual')
+plt.bar(x+0.2, tot_member_m, width, label='Member')
+
+plt.xticks(x, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])
+plt.xlabel("Month")
+plt.legend()
+plt.title('Members vs Casual = Total of rides per day of the months')
+plt.legend()
+plt.show()
+```
+![bars](Visualisations/Total of rides per day of the months.png)
+
+> **Key insight:** : Casual customers take more rides in July, and August months than member customers. This result may allow me to assume that July and August customers can consist of tourists who visit the city.
