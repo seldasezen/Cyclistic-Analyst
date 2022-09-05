@@ -234,7 +234,7 @@ plt.title('Members vs Casual = Total of rides per day of the months')
 plt.legend()
 plt.show()
 ```
-![bars](Visualisations/Total of rides per day of the months.png)
+![bars](Visualisations/Total_mnt.png)
 
 > **Key insight:** : Casual customers take more rides in July, and August months than member customers. This result may allow me to assume that July and August customers can consist of tourists who visit the city.
 
