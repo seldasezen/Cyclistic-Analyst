@@ -121,7 +121,7 @@ Visualizations were created in Jupiyer Notebook to observe trends between the us
 
 ### Member vs. Casual = Number of Riders
 
-```57.1% ```of riders are **member** riders ```42.9% ```of riders are **casual** riders
+```57.1% ``` (~2.67 M) of rides were taken by **member riders** and ```42.9% ```(~2 M) of rides were taken by **casual riders** .
 
 ```python
 casual_tot= casual['ride_id'].count()
@@ -130,5 +130,6 @@ member_tot= member['ride_id'].count()
 print('member_tot: ', member_tot)
 
 ```
+![bars](Visualisations/Number_of_mem_cas.png)
 
 > **Key insight:** : Maximum Ride of annual members is 49107.15
